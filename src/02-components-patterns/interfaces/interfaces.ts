@@ -1,9 +1,10 @@
-import { ReactElement } from "react";
-import { JsxElement } from "typescript";
+import React, { ReactElement } from "react";
 
 export interface Props {
   product: Product;
   children?: ReactElement | ReactElement[];
+  className?: string;
+  style?: React.CSSProperties;
 }
 export interface Product {
   id: string;

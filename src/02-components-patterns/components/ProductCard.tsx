@@ -2,14 +2,11 @@ import styles from "../styles/styles.module.css";
 import useCounter from "../hooks/useCounter";
 import { createContext } from "react";
 import { ProductContextProps, Props } from "../interfaces/interfaces";
-import { ProductImage } from "./ProductImages";
-import { ProductTitle } from "./ProductTitle";
-import { ProductButtons } from "./ProductButtons";
 
 export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
-const ProductCard = ({ children, product }: Props) => {
+const ProductCard = ({ children, product, className, style }: Props) => {
   const { counter, increaseBy } = useCounter();
 
   return (
@@ -20,12 +17,9 @@ const ProductCard = ({ children, product }: Props) => {
         product,
       }}
     >
-      <div className={styles.productCard}>
+      <div style={style} className={`${styles.productCard} ${className}`}>
         <h1>Product Card</h1>
         {children}
-        <ProductImage img={product.img} />
-        <ProductTitle title={product.title} />
-        <ProductButtons />
       </div>
     </Provider>
   );
