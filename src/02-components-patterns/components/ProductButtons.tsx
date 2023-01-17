@@ -4,9 +4,10 @@ import { ProductContext } from "./ProductCard";
 
 interface ButtonsProps {
   className?: string;
+  count?: number;
 }
 
-export const ProductButtons = ({ className }: ButtonsProps) => {
+export const ProductButtons = ({ className, count }: ButtonsProps) => {
   const { increaseBy, counter } = useContext(ProductContext);
 
   return (

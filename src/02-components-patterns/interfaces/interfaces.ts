@@ -5,6 +5,8 @@ export interface Props {
   children?: ReactElement | ReactElement[];
   className?: string;
   style?: React.CSSProperties;
+  onChange?: (args: onChangeArgs) => void;
+  value?: number;
 }
 export interface Product {
   id: string;
@@ -28,4 +30,9 @@ export interface ProductCardHocProps {
   Title: ({ title }: { title?: string }) => JSX.Element;
   Button: () => JSX.Element;
   Image: ({ img }: { img?: string }) => JSX.Element;
+}
+
+export interface onChangeArgs {
+  product: Product;
+  count: number;
 }
