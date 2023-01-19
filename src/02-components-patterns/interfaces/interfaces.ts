@@ -2,11 +2,12 @@ import React, { ReactElement } from "react";
 
 export interface Props {
   product: Product;
-  children?: ReactElement | ReactElement[];
+  children: (args: ProductCardHandler) => JSX.Element;
   className?: string;
   style?: React.CSSProperties;
   onChange?: (args: onChangeArgs) => void;
   value?: number;
+  initialValues?: initialValues;
 }
 export interface Product {
   id: string;
@@ -23,6 +24,7 @@ export interface ProductContextProps {
   counter: number;
   increaseBy: (value: number) => void;
   product: Product;
+  maxCount?: number;
 }
 
 export interface ProductCardHocProps {
@@ -35,4 +37,18 @@ export interface ProductCardHocProps {
 export interface onChangeArgs {
   product: Product;
   count: number;
+}
+
+export interface initialValues {
+  count?: number;
+  maxCount?: number;
+}
+
+export interface ProductCardHandler {
+  counter: number;
+  isMaxCounterReached: boolean;
+  maxCount?: number;
+  product: Product;
+  increaseBy: (value: number) => void;
+  reset: () => void;
 }

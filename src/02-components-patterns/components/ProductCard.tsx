@@ -13,8 +13,15 @@ const ProductCard = ({
   style,
   onChange,
   value,
+  initialValues,
 }: Props) => {
-  const { counter, increaseBy } = useCounter({ onChange, product, value });
+  const { counter, increaseBy, isMaxCounterReached, reset, maxCount } =
+    useCounter({
+      onChange,
+      product,
+      value,
+      initialValues,
+    });
 
   return (
     <Provider
@@ -22,10 +29,18 @@ const ProductCard = ({
         counter,
         increaseBy,
         product,
+        maxCount: initialValues?.maxCount,
       }}
     >
       <div style={style} className={`${styles.productCard} ${className}`}>
-        {children}
+        {children({
+          counter,
+          increaseBy,
+          isMaxCounterReached,
+          maxCount,
+          reset,
+          product,
+        })}
       </div>
     </Provider>
   );
